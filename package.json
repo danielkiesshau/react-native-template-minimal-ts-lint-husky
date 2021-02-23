@@ -6,8 +6,20 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "test": "jest --watchAll  --detectOpenHandles",
+    "ci:test": "jest",
+    "lint": "eslint --fix  --ignore-pattern *.test.* .",
+    "tsc:watch": "npx tsc --watch",
+    "pre:git-action": "npm run lint && npm run ci:test",
+    "android:build:release": "cd android && ./gradlew assembleRelease",
+    "android:release": "react-native run-android --variant=release",
+    "postinstall": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre:git-action",
+      "pre-push": "npm run pre:git-action"
+    }
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -45,6 +57,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.8",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.2.1",
@@ -54,7 +67,9 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "testPathIgnorePatterns": [
       ".+e2e.+"
     ]
