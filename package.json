@@ -1,12 +1,17 @@
 {
   "name": "react-native-template-minimal-ts-lint-husky",
   "version": "0.0.10",
+  "homepage": "https://github.com/danielkiesshau/react-native-template-minimal-ts-lint-husky",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielkiesshau/react-native-template-minimal-ts-lint-husky"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest --watchAll  --detectOpenHandles",
-    "ci:test": "jest",
+    "ci:test": "jest -o",
     "lint": "eslint --fix  --ignore-pattern *.test.* .",
     "tsc:watch": "npx tsc --watch",
     "pre:git-action": "npm run lint && npm run ci:test",

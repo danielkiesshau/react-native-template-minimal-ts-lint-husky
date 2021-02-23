@@ -7,12 +7,12 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest --watchAll  --detectOpenHandles",
-    "ci:test": "jest",
+    "ci:test": "jest -o",
     "lint": "eslint --fix  --ignore-pattern *.test.* .",
     "tsc:watch": "npx tsc --watch",
     "pre:git-action": "npm run lint && npm run ci:test",
     "android:build:release": "cd android && ./gradlew assembleRelease",
-    "android:release": "react-native run-android --variant=release"
+    "android:release": "react-native run-android --variant=release",
   },
   "husky": {
     "hooks": {
